@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class AnnounceConfiguration {
 
@@ -40,13 +41,13 @@ public class AnnounceConfiguration {
             Path dataFolderPath = pluginPath.getParent().resolve(description.getId());
 
             FileInputStream fis = new FileInputStream(new File(dataFolderPath.toFile(), "announcements.yml"));
-            List<String> loadedMessages = yaml.load(fis);
+            List<String> loadedMessages = (List<String>) yaml.load(fis);
 
             messages.clear();
             messages.addAll(loadedMessages);
 
             fis.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

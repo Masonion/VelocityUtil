@@ -2,6 +2,10 @@ package org.mason.velocityutil.Announcements;
 
 import com.velocitypowered.api.proxy.ProxyServer;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -30,7 +34,8 @@ public class Announcer {
         if (!messages.isEmpty()) {
             int index = currentMessageIndex.getAndUpdate(i -> (i + 1) % messages.size());
             String message = messages.get(index);
-            server.getAllPlayers().forEach(player -> player.sendMessage(Component.text(message)));
+            final TextComponent textComponent = (Component.text(message, NamedTextColor.LIGHT_PURPLE));
+            server.getAllPlayers().forEach(player -> player.sendMessage(textComponent));
         }
     }
 }

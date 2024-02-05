@@ -29,7 +29,6 @@ public class ServerSwitchCommand implements SimpleCommand {
         }
         Player player = (Player) source;
 
-        // If the player is already on the target server, do nothing
         if (player.getCurrentServer().isPresent() &&
                 player.getCurrentServer().get().getServerInfo().getName().equalsIgnoreCase(targetServer)) {
             return;

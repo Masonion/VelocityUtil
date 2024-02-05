@@ -49,10 +49,8 @@ public class VelocityUtil {
         announcer = new Announcer(announceConfig, server);
         announcer.startBroadcasting();
 
-        // Get the LuckPerms instance
         LuckPerms luckPermsInstance = LuckPermsProvider.get();
 
-        // Register the commands
         server.getCommandManager().register("sc", new StaffChatCommand(server, logger, luckPermsInstance));
         server.getCommandManager().register("hub", new ServerSwitchCommand(server, logger, "hub"));
         server.getCommandManager().register("announce", new AnnounceCommand(server, logger, luckPermsInstance));

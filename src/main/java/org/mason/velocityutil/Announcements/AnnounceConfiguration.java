@@ -17,18 +17,15 @@ public class AnnounceConfiguration {
     private List<String> messages;
     private static PluginContainer container;
 
-    // Constructor
     public AnnounceConfiguration(PluginContainer container) {
         this.container = container;
-        this.messages = new ArrayList<>();  // initialization
+        this.messages = new ArrayList<>();
     }
 
-    // Getter method
     public List<String> getMessages() {
         return this.messages;
     }
 
-    // Setter method
     public void setMessages(List<String> messages) {
         this.messages = messages;
     }

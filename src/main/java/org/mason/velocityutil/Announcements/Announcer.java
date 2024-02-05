@@ -6,6 +6,7 @@ import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -26,7 +27,7 @@ public class Announcer {
     }
 
     public void startBroadcasting() {
-        executorService.scheduleAtFixedRate(this::broadcastNextMessage, 0, 5, TimeUnit.MINUTES);
+        executorService.scheduleAtFixedRate(this::broadcastNextMessage, 0, 10, TimeUnit.MINUTES);
     }
 
     private void broadcastNextMessage() {
@@ -34,8 +35,8 @@ public class Announcer {
         if (!messages.isEmpty()) {
             int index = currentMessageIndex.getAndUpdate(i -> (i + 1) % messages.size());
             String message = messages.get(index);
-            final TextComponent textComponent = (Component.text(message, NamedTextColor.LIGHT_PURPLE));
-            server.getAllPlayers().forEach(player -> player.sendMessage(textComponent));
+            Component chatMessage = LegacyComponentSerializer.legacyAmpersand().deserialize(message);
+            server.getAllPlayers().forEach(player -> player.sendMessage(chatMessage));
         }
     }
 }

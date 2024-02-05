@@ -38,7 +38,7 @@ public class StaffChatCommand implements SimpleCommand {
             if (user != null && user.getCachedData().getPermissionData().checkPermission("akurra.mod").asBoolean()) {
                 String message = String.join(" ", args);
                 Component chatMessage = LegacyComponentSerializer.legacyAmpersand().deserialize(
-                        "&b" + "&l" + "[SC]" + "&7" + "[" + player.getCurrentServer().get().getServerInfo().getName().toUpperCase() + "]" +
+                        "&9" + "[SC]" + "&7" + "[" + player.getCurrentServer().get().getServerInfo().getName().toUpperCase() + "]" +
                                 user.getCachedData().getMetaData().getPrefix() + player.getUsername() + "&r" + ": " + message);
                 server.getAllPlayers().stream().filter(staff -> staff.hasPermission("akurra.mod")).forEach(staff -> staff.sendMessage(chatMessage));
             } else {

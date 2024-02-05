@@ -17,18 +17,15 @@ public class IPsConfiguration {
     private Set<String> allowedIPs;
     private static PluginContainer container;
 
-    // Adjust the constructor to accept PluginContainer
     public IPsConfiguration(PluginContainer container) {
         this.container = container;
-        this.allowedIPs = new HashSet<>();  // initialization
+        this.allowedIPs = new HashSet<>();
     }
 
-    // Getter method
     public Set<String> getAllowedIPs() {
         return this.allowedIPs;
     }
 
-    // Setter method
     public void setAllowedIPs(Set<String> allowedIPs) {
         this.allowedIPs = allowedIPs;
     }

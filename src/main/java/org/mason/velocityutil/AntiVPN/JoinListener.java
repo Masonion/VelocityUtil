@@ -51,7 +51,6 @@ public class JoinListener {
                 }
                 rd.close();
 
-                // Parse JSON response
                 String result = response.toString();
                 JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
 
